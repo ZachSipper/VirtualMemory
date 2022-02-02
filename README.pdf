@@ -13,10 +13,15 @@ Data Strctures/Implementation
    Then swap in the requested page, and update it to valid and update the PFN within it's PTE.
 
 2. FIFO
-   super easy, declared a global linked list using the provided doubly linked list structure. Then everytime pagefault handler is called, i create a new list node and add it to the tail of the list. When i need to get a victim frame, just remove the head of the list and use that PFN(frame number) effectively pulling the oldest of the frames, hence it was "first in".
+   super easy, declared a global linked list using the provided doubly linked list structure.
+   Then everytime pagefault handler is called, i create a new list node and add it to the tail of the list.
+   When i need to get a victim frame, just remove the head of the list and use that PFN(frame number) effectively pulling the oldest of the frames, hence it was "first in".
 
-3. LRU *HAVING ISSUES, made logical error(s) somewhere that i am trying to track down*
-   for this one, when you call is_page_hit() and the hit is successful, meaning the page is currently in physical memory, you remove that PFN node from the list and add it back to the tail of the list. Creating the notion that the list is in order form (head->tail):(least recently used->most recently used). So whenever pagefault handler is called, to keep the ordering, you simply remove the head of the list and use that PFN then place the new node at the tail of the list.
+3. LRU **HAVING ISSUES, made logical error(s) somewhere that i am trying to track down**
+   for this one, when you call is_page_hit() and the hit is successful, meaning the page is currently in physical memory,
+   you remove that PFN node from the list and add it back to the tail of the list.
+   Creating the notion that the list is in order form (head->tail):(least recently used->most recently used).
+   So whenever pagefault handler is called, to keep the ordering, you simply remove the head of the list and use that PFN then place the new node at the tail of the list.
    
 4. CLOCK
    not yet implemented
