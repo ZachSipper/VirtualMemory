@@ -14,10 +14,10 @@ int fifo()
 	return temp->data;
 }
 
-int lru(int data)
+int lru()
 {
 	struct Node *temp = head;
-	head = list_remove(head, data);
+	list_remove_head(head);
 
 	return temp->data;
 }
@@ -125,6 +125,7 @@ int is_page_hit(int pid, int VPN, char type)
 		if(type == 'R' && replacementPolicy == LRU)
 		{
 			lru();
+			head = list_insert_tail(head, pte.PFN);
 		} // if
 
 		return pte.PFN;
