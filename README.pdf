@@ -1,5 +1,12 @@
-Zach Sipper
-#811873218
+### How to Download and Run
+1. clone from git
+2. "$make" to compile the code
+3. "$./vm <no. of frames> <replacement policy> <input>"
+         no. of frames: specify the number of frames to allocate on the emulated physical memory
+         replacement policy: Memory manahement technique of choice, FIFO, LRU, or CLOCK
+         input: there is a file 'input_gen.c' that will generate input files in the format required for this program to parse said file correctly.
+            within 'example_ipnuts/' there are numerous input files ready to use.
+
 
 Data Strctures/Implementation
 #############################################
